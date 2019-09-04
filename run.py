@@ -3,6 +3,7 @@ import logging
 import os
 import sys
 from datetime import datetime
+import pickle
 
 import torch
 from PIL import Image
@@ -104,6 +105,10 @@ def meta_train(gpu, dataset_path, continue_id):
             # Generate frame using landmarks from frame t
             x_t, y_t = t[:, 0, ...], t[:, 1, ...]
             x_hat = G(y_t, e_hat)
+            print('type(y_t): {}, shape: {} '.format(type(y_t),y_t.shape))
+            print('type(e_hat): {}, shape: {} '.format(type(e_hat),e_hat.shape))
+            np.save('e_hat.npy', e_hat)
+
 
             # Optimize E_G and D
             r_x_hat, _ = D(x_hat, y_t, i)
