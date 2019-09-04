@@ -95,6 +95,8 @@ def get_video_list(source, size, output, overwrite=True):
         print('dirs: ', dirs)
         print('files: ', files)
         print('len(files): ', len(files))
+        print('os.path.basename(os.path.normpath(root)): ',os.path.basename(os.path.normpath(root)))
+        print('already_processed: ', already_processed)
         print('os.path.basename(os.path.normpath(root)) not in already_processed: ',
         os.path.basename(os.path.normpath(root)) not in already_processed)
         if len(files) > 0 and os.path.basename(os.path.normpath(root)) not in already_processed:
