@@ -95,8 +95,12 @@ def get_video_list(source, size, output, overwrite=True):
         print('dirs: ', dirs)
         print('files: ', files)
         if len(files) > 0 and os.path.basename(os.path.normpath(root)) not in already_processed:
+            print('inside if statement')
             assert contains_only_videos(files) and len(dirs) == 0
+            print('passed assert')
+            print('video list before: ', video_list)
             video_list.append((root, files))
+            print('video list after: ', video_list)
             counter += 1
             if 0 < size <= counter:
                 break
