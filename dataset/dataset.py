@@ -91,7 +91,9 @@ def get_video_list(source, size, output, overwrite=True):
     video_list = []
     counter = 0
     for root, dirs, files in os.walk(source):
-        print('root, dirs, files: ', root, dirs, files)
+        print('root: ', root)
+        print('dirs: ', dirs)
+        print('files: ', files)
         if len(files) > 0 and os.path.basename(os.path.normpath(root)) not in already_processed:
             assert contains_only_videos(files) and len(dirs) == 0
             video_list.append((root, files))
