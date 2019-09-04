@@ -31,7 +31,7 @@ class VGG_Activations(nn.Module):
 def vgg_face(pretrained=False, **kwargs):
     if pretrained:
         kwargs['init_weights'] = False
-    model = vgg.VGG(vgg.make_layers(vgg.cfgs['D'], batch_norm=False), num_classes=2622, **kwargs)
+    model = vgg.VGG(vgg.make_layers(vgg.cfg['D'], batch_norm=False), num_classes=2622, **kwargs)
     if pretrained:
         model.load_state_dict(vgg_face_state_dict())
     return model
