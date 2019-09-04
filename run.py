@@ -18,11 +18,11 @@ from dataset import preprocess_dataset, VoxCelebDataset
 import matplotlib.pyplot as plt
 
 GPU = {
-    'Embedder': 1,
+    'Embedder': 0,
     'Generator': 0,
     'Discriminator': 0,
-    'LossEG': 1,
-    'LossD': 1,
+    'LossEG': 0,
+    'LossD': 0,
 }
 
 
