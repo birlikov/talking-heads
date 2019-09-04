@@ -130,7 +130,7 @@ def process_video_folder(video):
         logging.error(f'Video {os.path.basename(os.path.normpath(folder))} could not be processed:\n{e}')
 
 
-def contains_only_videos(files, extension='.mp4'):
+def contains_only_videos(files, extension='.mov'):
     """
     Checks whether the files provided all end with the specified video extension.
     :param files: List of file names.
