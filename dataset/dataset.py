@@ -131,8 +131,10 @@ def process_video_folder(video):
 
     try:
         assert contains_only_videos(files)
-        frames = np.concatenate([extract_frames(os.path.join(folder, f)) for f in files])
+        frameslist = [extract_frames(os.path.join(folder, f)) for f in files]
         print('-'*20)
+        print('len(frameslist): ', len(frameslist))
+        frames = np.concatenate(frameslist)
         print('frames.shape: ', frames.shape)
         print('-'*20)
 
