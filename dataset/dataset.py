@@ -91,6 +91,7 @@ def get_video_list(source, size, output, overwrite=True):
     video_list = []
     counter = 0
     for root, dirs, files in os.walk(source):
+        print('-'*50)
         print('root: ', root)
         print('dirs: ', dirs)
         print('files: ', files)
@@ -131,6 +132,9 @@ def process_video_folder(video):
     try:
         assert contains_only_videos(files)
         frames = np.concatenate([extract_frames(os.path.join(folder, f)) for f in files])
+        print('-'*20)
+        print('frames.shape: ', frames.shape)
+        print('-'*20)
 
         save_video(
             frames=select_random_frames(frames),
