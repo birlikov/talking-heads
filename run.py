@@ -105,9 +105,19 @@ def meta_train(gpu, dataset_path, continue_id):
             # Generate frame using landmarks from frame t
             x_t, y_t = t[:, 0, ...], t[:, 1, ...]
             x_hat = G(y_t, e_hat)
-            print('type(y_t): {}, shape: {} '.format(type(y_t),y_t.shape))
-            print('type(e_hat): {}, shape: {} '.format(type(e_hat),e_hat.shape))
-            np.save('e_hat.npy', e_hat)
+            
+            # print('type(x_t): {}, shape: {} '.format(type(x_t),x_t.shape))
+            # print('type(x_hat): {}, shape: {} '.format(type(x_hat),x_hat.shape))
+            # print('type(y_t): {}, shape: {} '.format(type(y_t),y_t.shape))
+            # print('type(e_hat): {}, shape: {} '.format(type(e_hat),e_hat.shape))
+
+            # type(x_t): <class 'torch.Tensor'>, shape: torch.Size([2, 3, 256, 256])
+            # type(x_hat): <class 'torch.Tensor'>, shape: torch.Size([2, 3, 256, 256])
+            # type(y_t): <class 'torch.Tensor'>, shape: torch.Size([2, 3, 256, 256])
+            # type(e_hat): <class 'torch.Tensor'>, shape: torch.Size([2, 512])
+
+            torch.save(e_hat,'e_hat')
+            torch.save(y_t, 'y_t')
 
 
             # Optimize E_G and D
@@ -150,6 +160,7 @@ def meta_train(gpu, dataset_path, continue_id):
             # region SAVE ----------------------------------------------------------------------------------------------
             save_image(os.path.join(config.GENERATED_DIR, f'last_result_x.png'), x_t[0])
             save_image(os.path.join(config.GENERATED_DIR, f'last_result_x_hat.png'), x_hat[0])
+            save_image(os.path.join(config.GENERATED_DIR, f'last_result_y.png'), y_t[0])
 
             if (batch_num + 1) % 100 == 0:
                 save_image(os.path.join(config.GENERATED_DIR, f'{datetime.now():%Y%m%d_%H%M%S%f}_x.png'), x_t[0])
