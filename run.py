@@ -105,7 +105,7 @@ def meta_train(gpu, dataset_path, continue_id):
             # Generate frame using landmarks from frame t
             x_t, y_t = t[:, 0, ...], t[:, 1, ...]
             x_hat = G(y_t, e_hat)
-            
+
             # print('type(x_t): {}, shape: {} '.format(type(x_t),x_t.shape))
             # print('type(x_hat): {}, shape: {} '.format(type(x_hat),x_hat.shape))
             # print('type(y_t): {}, shape: {} '.format(type(y_t),y_t.shape))

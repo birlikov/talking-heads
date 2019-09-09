@@ -309,8 +309,8 @@ def plot_landmarks(frame, landmarks):
     fig = plt.figure(figsize=(frame.shape[0] / dpi, frame.shape[1] / dpi), dpi=dpi)
     ax = fig.add_subplot(111)
     ax.axis('off')
-    ax.set_xlim(( -1, 2))
-    ax.set_ylim(( -1, 2))
+    # ax.set_xlim(( -1, 2))
+    # ax.set_ylim(( -1, 2))
 
     plt.imshow(np.ones(frame.shape))
     plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
