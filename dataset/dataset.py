@@ -329,7 +329,7 @@ def plot_landmarks(frame, landmarks):
     # Mouth
     # ax.plot(landmarks[48:60, 0], landmarks[48:60, 1], linestyle='-', color='purple', lw=2)
     ax.plot(landmarks[:7, 0], landmarks[:7, 1], linestyle='-', color='purple', lw=1)
-    ax.plot(np.append(landmarks[6:12, 0],landmarks[0,0]), np.append(landmarks[:7, 1],landmarks[0,1]), linestyle='-', color='purple', lw=1)
+    ax.plot(np.append(landmarks[6:12, 0],landmarks[0,0]), np.append(landmarks[6:12, 1],landmarks[0,1]), linestyle='-', color='purple', lw=1)
     ax.plot(landmarks[12:17, 0], landmarks[12:17, 1], linestyle='-', color='purple', lw=1)
     ax.plot(np.append(landmarks[16:20, 0],landmarks[12,0]), np.append(landmarks[16:20, 1],landmarks[12,1]), linestyle='-', color='purple', lw=1)
 
