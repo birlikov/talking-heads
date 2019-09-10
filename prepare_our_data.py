@@ -25,7 +25,7 @@ for mouth in os.listdir(args.m):
 
     img = cv2.imread(os.path.join(args.m,mouth))
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    frame = cv2.resize(img,(256,350))
+    frame = cv2.resize(img,(250,350))
 
     # cv2.imwrite('frame.png',frame)
 
@@ -37,7 +37,7 @@ for mouth in os.listdir(args.m):
 
 print('len data: ', len(data))
 
-for i in range(64):
+for i in range(16):
     filename = 's2_{}.vid'.format(i)
     idx = random.sample(range(0,len(data)),30)
     small_data = [data[k] for k in idx]

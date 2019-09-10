@@ -115,8 +115,8 @@ def meta_train(gpu, dataset_path, continue_id):
             # type(y_t): <class 'torch.Tensor'>, shape: torch.Size([2, 3, 256, 256])
             # type(e_hat): <class 'torch.Tensor'>, shape: torch.Size([2, 512])
 
-            torch.save(e_hat,'e_hat')
-            torch.save(y_t, 'y_t')
+            torch.save(e_hat,'../e_hat')
+            torch.save(y_t, '../y_t')
 
 
             # Optimize E_G and D
