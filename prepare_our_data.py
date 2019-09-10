@@ -28,7 +28,7 @@ for mouth in os.listdir(args.m):
     frame = cv2.resize(img,(256,350))
 
     # cv2.imwrite('frame.png',frame)
-    #
+    
 
     data.append({
         'frame': frame,
