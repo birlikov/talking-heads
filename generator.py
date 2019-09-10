@@ -25,4 +25,4 @@ G = load_model(G, continue_id)
 
 x_hat = G(y_t, e_hat)
 
-save_image(os.path.join(config.GENERATED_DIR, f'Generated_x_hat.png'), x_hat[0])
+save_image(os.path.join(config.GENERATED_DIR, 'Generated_x_hat.png'), x_hat[0])

@@ -306,14 +306,15 @@ def plot_landmarks(frame, landmarks):
     :return: RGB image with the landmarks as a Pillow Image.
     """
     dpi = config.FEATURES_DPI
-    fig = plt.figure(figsize=(frame.shape[0] / dpi, frame.shape[1] / dpi), dpi=dpi)
-    ax = fig.add_subplot(111)
+    # fig = plt.figure(figsize=(frame.shape[0] / dpi, frame.shape[1] / dpi), dpi=dpi)
+    fig, ax = plt.subplots()
+    # ax = fig.add_subplot(111)
     ax.axis('off')
     # ax.set_xlim(( -1, 2))
     # ax.set_ylim(( -1, 2))
 
-    plt.imshow(np.ones(frame.shape))
-    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    # plt.imshow(np.ones(frame.shape))
+    # plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
     # # Head
     # ax.plot(landmarks[0:17, 0], landmarks[0:17, 1], linestyle='-', color='green', lw=2)
@@ -328,10 +329,14 @@ def plot_landmarks(frame, landmarks):
     # ax.plot(landmarks[42:48, 0], landmarks[42:48, 1], linestyle='-', color='red', lw=2)
     # Mouth
     # ax.plot(landmarks[48:60, 0], landmarks[48:60, 1], linestyle='-', color='purple', lw=2)
-    ax.plot(landmarks[:7, 0], landmarks[:7, 1], linestyle='-', color='purple', lw=1)
-    ax.plot(np.append(landmarks[6:12, 0],landmarks[0,0]), np.append(landmarks[6:12, 1],landmarks[0,1]), linestyle='-', color='purple', lw=1)
-    ax.plot(landmarks[12:17, 0], landmarks[12:17, 1], linestyle='-', color='purple', lw=1)
-    ax.plot(np.append(landmarks[16:20, 0],landmarks[12,0]), np.append(landmarks[16:20, 1],landmarks[12,1]), linestyle='-', color='purple', lw=1)
+
+    # landmarks[:,0] = (landmarks[:,0] - np.min(landmarks[:,0]))/( np.max(landmarks[:,0]) - np.min(landmarks[:,0]))
+    # landmarks[:,1] = (landmarks[:,1] - np.min(landmarks[:,1]))/( np.max(landmarks[:,1]) - np.min(landmarks[:,1]))
+    lw = 3
+    ax.plot(landmarks[:7, 0], landmarks[:7, 1], linestyle='-', color='purple', lw=lw)
+    ax.plot(np.append(landmarks[6:12, 0],landmarks[0,0]), np.append(landmarks[6:12, 1],landmarks[0,1]), linestyle='-', color='purple', lw=lw)
+    ax.plot(landmarks[12:17, 0], landmarks[12:17, 1], linestyle='-', color='purple', lw=lw)
+    ax.plot(np.append(landmarks[16:20, 0],landmarks[12,0]), np.append(landmarks[16:20, 1],landmarks[12,1]), linestyle='-', color='purple', lw=lw)
 
 
     fig.canvas.draw()

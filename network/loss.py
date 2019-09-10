@@ -43,7 +43,7 @@ class LossEG(nn.Module):
         for i in range(0, len(vgg_face_x)):
             vgg_face_loss += F.l1_loss(vgg_face_x_hat[i], vgg_face_x[i])
 
-        return vgg19_loss * config.LOSS_VGG19_WEIGHT + vgg_face_loss * config.LOSS_VGG_FACE_WEIGHT
+        return F.mse_loss(x,x_hat)#vgg19_loss * config.LOSS_VGG19_WEIGHT + vgg_face_loss * config.LOSS_VGG_FACE_WEIGHT
 
     def loss_adv(self, r_x_hat):
         return -r_x_hat.mean()
