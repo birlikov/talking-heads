@@ -1,4 +1,6 @@
 gpu=True
+print(f'it is {gpu}')
+
 print(f'Running on {"GPU" if gpu else "CPU"}.')
 
 import argparse
