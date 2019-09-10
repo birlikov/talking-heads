@@ -1,8 +1,3 @@
-gpu=True
-print(f'it is {gpu}')
-
-print(f'Running on {"GPU" if gpu else "CPU"}.')
-
 import argparse
 import logging
 import os
@@ -30,8 +25,6 @@ GPU = {
     'LossEG': 0,
     'LossD': 0,
 }
-gpu=True
-print(f'Running on {"GPU" if gpu else "CPU"}.')
 
 # region Training
 def meta_train(gpu, dataset_path, continue_id):
