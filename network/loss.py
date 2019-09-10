@@ -1,5 +1,5 @@
-from network.vgg import vgg_face, VGG_Activations
-from torchvision.models import vgg19
+# from network.vgg import vgg_face, VGG_Activations
+# from torchvision.models import vgg19
 
 import torch
 from torch import nn
@@ -12,8 +12,8 @@ class LossEG(nn.Module):
     def __init__(self, feed_forward=True, gpu=None):
         super(LossEG, self).__init__()
 
-        self.VGG_FACE_AC = VGG_Activations(vgg_face(pretrained=True), [1, 6, 11, 18, 25])
-        self.VGG19_AC = VGG_Activations(vgg19(pretrained=True), [1, 6, 11, 20, 29])
+        # self.VGG_FACE_AC = VGG_Activations(vgg_face(pretrained=True), [1, 6, 11, 18, 25])
+        # self.VGG19_AC = VGG_Activations(vgg19(pretrained=True), [1, 6, 11, 20, 29])
 
         self.match_loss = not feed_forward
         self.gpu = gpu
@@ -28,20 +28,20 @@ class LossEG(nn.Module):
         x_hat = (x_hat - IMG_NET_MEAN) / IMG_NET_STD
 
         # VGG19 Loss
-        vgg19_x_hat = self.VGG19_AC(x_hat)
-        vgg19_x = self.VGG19_AC(x)
-
-        vgg19_loss = 0
-        for i in range(0, len(vgg19_x)):
-            vgg19_loss += F.l1_loss(vgg19_x_hat[i], vgg19_x[i])
-
-        # VGG Face Loss
-        vgg_face_x_hat = self.VGG_FACE_AC(x_hat)
-        vgg_face_x = self.VGG_FACE_AC(x)
-
-        vgg_face_loss = 0
-        for i in range(0, len(vgg_face_x)):
-            vgg_face_loss += F.l1_loss(vgg_face_x_hat[i], vgg_face_x[i])
+        # vgg19_x_hat = self.VGG19_AC(x_hat)
+        # vgg19_x = self.VGG19_AC(x)
+        #
+        # vgg19_loss = 0
+        # for i in range(0, len(vgg19_x)):
+        #     vgg19_loss += F.l1_loss(vgg19_x_hat[i], vgg19_x[i])
+        #
+        # # VGG Face Loss
+        # vgg_face_x_hat = self.VGG_FACE_AC(x_hat)
+        # vgg_face_x = self.VGG_FACE_AC(x)
+        #
+        # vgg_face_loss = 0
+        # for i in range(0, len(vgg_face_x)):
+        #     vgg_face_loss += F.l1_loss(vgg_face_x_hat[i], vgg_face_x[i])
 
         return F.mse_loss(x,x_hat)#vgg19_loss * config.LOSS_VGG19_WEIGHT + vgg_face_loss * config.LOSS_VGG_FACE_WEIGHT
 
