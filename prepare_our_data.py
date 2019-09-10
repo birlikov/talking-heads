@@ -37,7 +37,7 @@ for mouth in os.listdir(args.m):
 
 print('len data: ', len(data))
 
-for i in range(16):
+for i in range(10):
     filename = 's2_{}.vid'.format(i)
     idx = random.sample(range(0,len(data)),30)
     small_data = [data[k] for k in idx]
