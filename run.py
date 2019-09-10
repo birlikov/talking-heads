@@ -1,5 +1,6 @@
 gpu=True
 print(f'Running on {"GPU" if gpu else "CPU"}.')
+
 import argparse
 import logging
 import os
